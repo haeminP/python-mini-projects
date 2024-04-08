@@ -1,68 +1,16 @@
 import random
+from hangman_words import word_list
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
 
 end_of_game = False
-word_list = ["aardvark", "baboon", "camel"]
-chosen_word = random.choice(word_list)
 lives = 6
 
 
+from hangman_art import logo
+print(logo)
 #Testing code
 print(f'Pssst, the solution is {chosen_word}.')
 
@@ -74,7 +22,6 @@ for _ in range(len(chosen_word)):
 print(display)
 
 # ask user to guess a letter
-
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
@@ -97,4 +44,5 @@ while not end_of_game:
         end_of_game = True
         print("You win!")
 
+    from hangman_art import stages
     print(stages[lives])
