@@ -11,13 +11,13 @@ lives = 6
 
 from hangman_art import logo
 print(logo)
+
 #Testing code
 print(f'Pssst, the solution is {chosen_word}.')
 
-# create an empty list
-# For each letter in the chosen_word, add a "_" to the list
+# create blanks for each letter in the chosen word
 display = []
-for _ in range(len(chosen_word)):
+for _ in range(word_length):
     display.append("_")
 print(display)
 
@@ -25,21 +25,28 @@ print(display)
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
-    #check guessed letter
-    for position in range(len(chosen_word)):
+    #If the user has entered a ltter they've already guess, let them know
+    if guess in display:
+        print(f"You've already guessed {guess}")
+
+    #Check the guessed letter
+    for position in range(word_length):
         letter = chosen_word[position]
         if letter == guess:
             display[position] = letter
 
+    #Check if user is wrong
     if guess not in chosen_word:
+        print(f"You guessed {guess}, that's not in the word. You lose a life.")
         lives -= 1
         if lives == 0:
             end_of_game = True
             print("You lose!")
 
+    #Join all the elements in the list and turn it into a String
     print(f"{' '.join(display)}")
 
-
+    #Check if user has got all letters
     if "_" not in display:
         end_of_game = True
         print("You win!")
