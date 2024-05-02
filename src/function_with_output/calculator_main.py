@@ -29,7 +29,7 @@ operations = {
 def calculator():
     print(logo)
 
-    num1 = float(input("+"))
+    num1 = float(input("What's the first number?: "))
     for symbol in operations:
         print(symbol)
     should_continue = True
