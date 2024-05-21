@@ -33,9 +33,9 @@ resources = {
 }
 
 def print_report():
-    print(f"Water: {resources['water']}ml")
     print(f"Milk: {resources['milk']}ml")
     print(f"Coffee: {resources['coffee']}g")
+    print(f"Water: {resources['water']}ml")
     print(f"Money: ${profit}")
 
 def is_resource_sufficient(order_ingredients):
@@ -58,10 +58,10 @@ def process_coins():
 def is_transaction_successful(money_recieved, drink_cost):
     """Returns True when the payment is accepted, or False if money is insufficient."""
     if money_recieved >= drink_cost:
-        change = round(money_recieved - drink_cost, 2)
-        print(f"here is ${change} in change.")
         global profit
         profit += drink_cost
+        change = round(money_recieved - drink_cost, 2)
+        print(f"here is ${change} in change.")
         return True
     else:
         print("Sorry that's not enough money. Money refunded.")
@@ -78,7 +78,7 @@ machine_on = True
 while machine_on:
     choice = input("What would you like? (espresso/latte/cappuccino): ")
     if choice == "off":
-        print("Coffee machine is off")
+        print("Turning off the coffee machine")
         machine_on = False
     elif choice == "report":
         print_report()
