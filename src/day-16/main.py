@@ -9,7 +9,7 @@
 # my_screen = Screen()
 # print(my_screen.canvheight)
 # my_screen.exitonclick()
-#
+
 
 
 # from prettytable import PrettyTable
@@ -33,15 +33,19 @@ from money_machine import MoneyMachine
 menu = Menu()
 coffee_maker = CoffeeMaker()
 money_machine = MoneyMachine()
+is_on = True
 
-coffee_maker.report()
 
-choice = input(f"What would you like to drink ({menu.get_items()})? ")
-if menu.find_drink(choice) != None:
-    order = menu.find_drink(choice)
-    if coffee_maker.is_resource_sufficient(order):
-        order_cost = order.cost
-        if money_machine.make_payment(order_cost):
+while is_on:
+    choice = input(f"What would you like to drink ({menu.get_items()})? ")
+    if choice == "off":
+        is_on = False
+    elif choice == "report":
+        money_machine.report()
+        coffee_maker.report()
+    else:
+        order = menu.find_drink(choice)
+        if coffee_maker.is_resource_sufficient(order) and money_machine.make_payment(order.cost):
             coffee_maker.make_coffee(order)
 
 
