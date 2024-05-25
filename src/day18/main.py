@@ -29,8 +29,8 @@ tim.speed("fastest")
 #         tim.pendown()
 
 # colours = ["cornflower blue", "gold", "misty rose", "light sea green", "orange red", "navy", "medium purple", "dark olive green", "cadet blue", "rosy brown", "deep pink", "thistle", "light salmon", "orange"]
-
-# draw shapes
+#
+# # draw shapes
 # def draw_shape(num_sides):
 #     angle = 360 / num_sides
 #     for _ in range(num_sides):
@@ -56,10 +56,6 @@ def draw_spirograph(size_of_gap):
         tim.color(random_color())
         tim.circle(100)
         tim.setheading(tim.heading() + size_of_gap)
-
-
-
-
 draw_spirograph(5)
 
 screen = Screen()
