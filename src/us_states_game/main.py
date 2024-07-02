@@ -34,6 +34,7 @@ def get_mouse_click_coor(x, y):
 
 def check_answer(answer_state, score):
     if answer_state in states:
+        guessed_states.append(answer_state)
         index = states.index(answer_state)
         x_coordinate = x_coordinates.get(index)
         y_coordinate = y_coordinates.get(index)
@@ -41,9 +42,9 @@ def check_answer(answer_state, score):
         score += 1
 
 
-game_is_on = True
-while game_is_on:
-    answer_state = screen.textinput(title="Guess the State", prompt="What's another state's name?").title()
+guessed_states = []
+while len(guessed_states) <= 50:
+    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 the State", prompt="What's another state's name?").title()
     check_answer(answer_state, score)
 
 # turtle.onscreenclick(get_mouse_click_coor())
