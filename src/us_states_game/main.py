@@ -43,7 +43,7 @@ def check_answer(answer_state, score):
 
 
 guessed_states = []
-while len(guessed_states) <= 50:
+while len(guessed_states) < 50:
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 the State", prompt="What's another state's name?").title()
     check_answer(answer_state, score)
 
